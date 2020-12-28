@@ -380,28 +380,28 @@
       
 
       
-        <h3><span id="什么是swagger">什么是Swagger？</span></h3>
+        <h3 id="什么是Swagger？"><a class="header-anchor" href="#什么是Swagger？">¶</a>什么是Swagger？</h3>
 <blockquote>
 <p>​	Simplify API development for users, teams, and enterprises with the Swagger open source and professional toolset.</p>
 </blockquote>
 <p>​	一个简化接口文档开发的工具。通过在代码里添加Swagger注解，即可自动生成对应的API文档，不用再手动编写文档。后端开发者通过Swagger自动生成API文档供前端和其他人使用，即使后期修改了接口，只需修改对应的注解，即可修改对应的文档，避免了文档和接口不一致的情况。</p>
 <p><img src="http://cdn.bitclick.top/image-20201203191858059.png" alt="image-20201203191858059"></p>
 <a id="more"></a><!--toc-->
-<h3><span id="springfox-swagger">Springfox Swagger</span></h3>
+<h3 id="Springfox-Swagger"><a class="header-anchor" href="#Springfox-Swagger">¶</a>Springfox Swagger</h3>
 <p>​	Spring官方基于Swagger规范，将Swagger整合成Springfox-Swagger项目，方便整合进Spring项目。</p>
 <p>​	<em><strong>Springfox Swagger</strong></em>目前已经更新到3.0.0。</p>
-<h3><span id="springfox-swagger整合进springboot">Springfox Swagger整合进SpringBoot</span></h3>
+<h3 id="Springfox-Swagger整合进SpringBoot"><a class="header-anchor" href="#Springfox-Swagger整合进SpringBoot">¶</a>Springfox Swagger整合进SpringBoot</h3>
 <ol>
 <li>
-<h4><span id="maven导入依赖">maven导入依赖：</span></h4>
+<h4 id="maven导入依赖："><a class="header-anchor" href="#maven导入依赖：">¶</a>maven导入依赖：</h4>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--   导入swagger     --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!--   导入swagger-ui     --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.4.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li>
-<h4><span id="编写配置类">编写配置类：</span></h4>
+<h4 id="编写配置类："><a class="header-anchor" href="#编写配置类：">¶</a>编写配置类：</h4>
 <p>配置类主要用来配置Api的一些信息，定义需要扫描的类或者方法，格式一般比较固定。</p>
 <p>需要创建配置类，并添加<strong>EnableSwagger2</strong>注解，开启Swagger注解模式。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.xieyingchao.config;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">@Configuration</span> <span class="comment">//配置类</span></span><br><span class="line"><span class="meta">@EnableSwagger2</span> <span class="comment">//开启swagger功能</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Swagger2Config</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">createRestApi</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2) <span class="comment">//指定为Swagger2</span></span><br><span class="line">                .apiInfo(apiInfo())</span><br><span class="line">                .select()</span><br><span class="line">        		 .apis(RequestHandlerSelectors.basePackage(<span class="string">&quot;com.xieyingchao.controller&quot;</span>))</span><br><span class="line">                .paths(PathSelectors.any())</span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> ApiInfo <span class="title">apiInfo</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> ApiInfoBuilder()</span><br><span class="line">            .title(<span class="string">&quot;online_bookstore Swagger接口测试&quot;</span>)</span><br><span class="line">            .description(<span class="string">&quot;网上书城接口文档&quot;</span>)</span><br><span class="line">            .termsOfServiceUrl(<span class="string">&quot;www.bticlick.top&quot;</span>)</span><br><span class="line">            .version(<span class="string">&quot;1.0&quot;</span>)</span><br><span class="line">            .build();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5><span id="apiinfo函数"><em>apiInfo</em>函数：</span></h5>
+<h5 id="apiInfo函数："><a class="header-anchor" href="#apiInfo函数：">¶</a><em>apiInfo</em>函数：</h5>
 <p><em>apiInfo</em>函数通过调用<em>ApiInfoBuilder</em>来定义api的一些信息，主要包括：</p>
 <ul>
 <li><em>title</em>：api文档标题</li>
@@ -412,7 +412,7 @@
 <li><em>license</em>和<em>licenseUrl</em>：证书</li>
 </ul>
 <p>最后调用<em>build</em>函数构建<em>ApiInfo</em>。</p>
-<h5><span id="createrestapi函数看源码比较好理解"><em>createRestApi</em>函数：看源码比较好理解</span></h5>
+<h5 id="createRestApi函数：看源码比较好理解"><a class="header-anchor" href="#createRestApi函数：看源码比较好理解">¶</a><em>createRestApi</em>函数：看源码比较好理解</h5>
 <p><em>createRestApi</em>函数返回一个Docket对象。</p>
 <ul>
 <li>
@@ -438,15 +438,15 @@
 </ul>
 </li>
 <li>
-<h4><span id="在类或者方法上添加注释">在类或者方法上添加注释。</span></h4>
+<h4 id="在类或者方法上添加注释。"><a class="header-anchor" href="#在类或者方法上添加注释。">¶</a>在类或者方法上添加注释。</h4>
 </li>
 <li>
-<h4><span id="启动项目">启动项目</span></h4>
+<h4 id="启动项目"><a class="header-anchor" href="#启动项目">¶</a>启动项目</h4>
 <p>在项目地址后面输入 “swagger-ui.html”，即可进入Swagger ui界面</p>
 <p><img src="http://cdn.bitclick.top/image-20201203205255190.png" alt="image-20201203205255190"></p>
 </li>
 </ol>
-<h3><span id="swagger常见注释">Swagger常见注释</span></h3>
+<h3 id="Swagger常见注释"><a class="header-anchor" href="#Swagger常见注释">¶</a>Swagger常见注释</h3>
 <p>具体内容在<code>io.swagger.annotations</code>、<code>springfox.documentation.annotations</code>等包里。</p>
 <table>
 <thead>
@@ -774,7 +774,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">什么是Swagger？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">Springfox Swagger</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">Springfox Swagger整合进SpringBoot</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">3.1.</span> <span class="nav-text">maven导入依赖：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">3.2.</span> <span class="nav-text">编写配置类：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">3.2.1.</span> <span class="nav-text">apiInfo函数：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">3.2.2.</span> <span class="nav-text">createRestApi函数：看源码比较好理解</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">3.3.</span> <span class="nav-text">在类或者方法上添加注释。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">3.4.</span> <span class="nav-text">启动项目</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">Swagger常见注释</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFSwagger%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">什么是Swagger？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Springfox-Swagger"><span class="nav-number">2.</span> <span class="nav-text">Springfox Swagger</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Springfox-Swagger%E6%95%B4%E5%90%88%E8%BF%9BSpringBoot"><span class="nav-number">3.</span> <span class="nav-text">Springfox Swagger整合进SpringBoot</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#maven%E5%AF%BC%E5%85%A5%E4%BE%9D%E8%B5%96%EF%BC%9A"><span class="nav-number">3.1.</span> <span class="nav-text">maven导入依赖：</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%96%E5%86%99%E9%85%8D%E7%BD%AE%E7%B1%BB%EF%BC%9A"><span class="nav-number">3.2.</span> <span class="nav-text">编写配置类：</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#apiInfo%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="nav-number">3.2.1.</span> <span class="nav-text">apiInfo函数：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#createRestApi%E5%87%BD%E6%95%B0%EF%BC%9A%E7%9C%8B%E6%BA%90%E7%A0%81%E6%AF%94%E8%BE%83%E5%A5%BD%E7%90%86%E8%A7%A3"><span class="nav-number">3.2.2.</span> <span class="nav-text">createRestApi函数：看源码比较好理解</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%A8%E7%B1%BB%E6%88%96%E8%80%85%E6%96%B9%E6%B3%95%E4%B8%8A%E6%B7%BB%E5%8A%A0%E6%B3%A8%E9%87%8A%E3%80%82"><span class="nav-number">3.3.</span> <span class="nav-text">在类或者方法上添加注释。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%AF%E5%8A%A8%E9%A1%B9%E7%9B%AE"><span class="nav-number">3.4.</span> <span class="nav-text">启动项目</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Swagger%E5%B8%B8%E8%A7%81%E6%B3%A8%E9%87%8A"><span class="nav-number">4.</span> <span class="nav-text">Swagger常见注释</span></a></li></ol></div>
             
 
           </div>

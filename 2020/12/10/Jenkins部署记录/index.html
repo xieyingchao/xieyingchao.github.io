@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Jenkins,Java," />
+  <meta name="keywords" content="Java,Jenkins," />
 
 
 
@@ -100,8 +100,8 @@
 <meta property="article:published_time" content="2020-12-10T13:10:53.426Z">
 <meta property="article:modified_time" content="2020-12-10T14:21:11.812Z">
 <meta property="article:author" content="Xie Yingchao">
-<meta property="article:tag" content="Jenkins">
 <meta property="article:tag" content="Java">
+<meta property="article:tag" content="Jenkins">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://cdn.bitclick.top/image-20201210215012018.png">
 
@@ -395,9 +395,9 @@
 <li><a target="_blank" rel="noopener" href="https://blog.csdn.net/boling_cavalry/article/details/78943061">实战：向GitHub提交代码时触发Jenkins自动构建</a></li>
 </ul>
 <a id="more"></a><!--toc-->
-<h3><span id="jenkins部署环境搭建">Jenkins部署环境搭建</span></h3>
+<h3 id="Jenkins部署环境搭建"><a class="header-anchor" href="#Jenkins部署环境搭建">¶</a>Jenkins部署环境搭建</h3>
 <p>所需环境：Git、Maven、JDK、Tomcat。</p>
-<h4><span id="maven环境配置">Maven环境配置</span></h4>
+<h4 id="Maven环境配置"><a class="header-anchor" href="#Maven环境配置">¶</a>Maven环境配置</h4>
 <ol>
 <li>
 <p>Maven3.3.9，<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/apache/maven/maven-3/3.3.9/binaries/">下载地址</a>。</p>
@@ -415,7 +415,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h4><span id="tomcat配置">Tomcat配置</span></h4>
+<h4 id="Tomcat配置"><a class="header-anchor" href="#Tomcat配置">¶</a>Tomcat配置</h4>
 <ol>
 <li>
 <p>Tomcat8，<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/apache/tomcat/tomcat-8/v8.5.61/bin/">下载地址</a>。</p>
@@ -431,12 +431,12 @@
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 修改port配置端口 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Connector</span> <span class="attr">port</span>=<span class="string">&quot;8888&quot;</span> <span class="attr">protocol</span>=<span class="string">&quot;HTTP/1.1&quot;</span></span></span><br><span class="line"><span class="tag">           <span class="attr">connectionTimeout</span>=<span class="string">&quot;20000&quot;</span></span></span><br><span class="line"><span class="tag">           <span class="attr">redirectPort</span>=<span class="string">&quot;8443&quot;</span> /&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h4><span id="jenkins配置">Jenkins配置</span></h4>
+<h4 id="Jenkins配置"><a class="header-anchor" href="#Jenkins配置">¶</a>Jenkins配置</h4>
 <ol>
 <li>下载Jenkins的war包，<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/jenkins/war-stable/2.263.1/jenkins.war">下载地址</a>。</li>
 <li>将下载的war包放到Tomcat的webapp目录下，启动Jenkins，浏览器输入http://localhost:8888/jenkins即可打开Jenkins的设置页。</li>
 </ol>
-<h3><span id="github触发jenkins构建">GitHub触发Jenkins构建</span></h3>
+<h3 id="GitHub触发Jenkins构建"><a class="header-anchor" href="#GitHub触发Jenkins构建">¶</a>GitHub触发Jenkins构建</h3>
 <p>大致步骤：</p>
 <ol>
 <li>GitHub上准备好需要构建的项目repository、创建webhook，用于GitHub在收到push时通知Jenkins。</li>
@@ -444,22 +444,22 @@
 <li>Jenkins添加上一步的<code>secretText</code>。</li>
 <li>Jenkins创建、配置项目。</li>
 </ol>
-<h4><span id="github创建webhook">GitHub创建webhook</span></h4>
+<h4 id="GitHub创建webhook"><a class="header-anchor" href="#GitHub创建webhook">¶</a>GitHub创建webhook</h4>
 <p><img src="http://cdn.bitclick.top/image-20201210215012018.png" alt="image-20201210215012018"></p>
 <p><code>Payload URL</code>为==Jenkins地址==加上==github-webhook==</p>
 <p><img src="http://cdn.bitclick.top/image-20201210215121806.png" alt="image-20201210215121806"></p>
-<h4><span id="github创建secrettext">GitHub创建<code>secretText</code></span></h4>
+<h4 id="GitHub创建secretText"><a class="header-anchor" href="#GitHub创建secretText">¶</a>GitHub创建<code>secretText</code></h4>
 <p><img src="http://cdn.bitclick.top/image-20201210215510762.png" alt="image-20201210215510762"></p>
 <p>需要填写note、勾线repo、admin:repo_hook，最后点击保存，会生成一个密钥，复制这个密钥搭配Jenkins里配置。</p>
-<h4><span id="jenkins配置密钥">Jenkins配置密钥</span></h4>
+<h4 id="Jenkins配置密钥"><a class="header-anchor" href="#Jenkins配置密钥">¶</a>Jenkins配置密钥</h4>
 <p>Jenkins进入系统配置、配置GitHubServer。</p>
 <p><img src="http://cdn.bitclick.top/image-20201210220025046.png" alt="image-20201210220025046"></p>
 <p><img src="http://cdn.bitclick.top/image-20201210220128111.png" alt="image-20201210220128111"></p>
-<h4><span id="jenkins配置环境">Jenkins配置环境</span></h4>
+<h4 id="Jenkins配置环境"><a class="header-anchor" href="#Jenkins配置环境">¶</a>Jenkins配置环境</h4>
 <p><img src="http://cdn.bitclick.top/image-20201210221543609.png" alt="image-20201210221543609"></p>
 <p><img src="http://cdn.bitclick.top/image-20201210221602873.png" alt="image-20201210221602873"></p>
 <p><img src="http://cdn.bitclick.top/image-20201210221628318.png" alt="image-20201210221628318"></p>
-<h3><span id="jenkins创建-配置项目">Jenkins创建、配置项目</span></h3>
+<h3 id="Jenkins创建、配置项目"><a class="header-anchor" href="#Jenkins创建、配置项目">¶</a>Jenkins创建、配置项目</h3>
 <ol>
 <li>
 <p>创建一个maven项目（Jenkins需要安装maven插件）</p>
@@ -482,10 +482,10 @@
 </ol>
 </li>
 </ol>
-<h3><span id="常见问题">常见问题</span></h3>
-<h5><span id="找不到创建maven项目">找不到创建maven项目？</span></h5>
+<h3 id="常见问题"><a class="header-anchor" href="#常见问题">¶</a>常见问题</h3>
+<h5 id="找不到创建maven项目？"><a class="header-anchor" href="#找不到创建maven项目？">¶</a>找不到创建maven项目？</h5>
 <p>需要安装Maven Integration plugin插件。</p>
-<h5><span id="构建错误maven-jvm-terminated-unexpectedly-with-exit-code-137">构建错误：Maven JVM terminated unexpectedly with exit code 137？</span></h5>
+<h5 id="构建错误：Maven-JVM-terminated-unexpectedly-with-exit-code-137？"><a class="header-anchor" href="#构建错误：Maven-JVM-terminated-unexpectedly-with-exit-code-137？">¶</a>构建错误：Maven JVM terminated unexpectedly with exit code 137？</h5>
 <p>是jvm的内存小了，编译过程中爆内存了，可以加大虚拟内存。</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_17046291/article/details/79023305">centOS增加虚拟内存教程</a></p>
 
@@ -505,9 +505,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Jenkins/" rel="tag"># Jenkins</a>
-          
             <a href="/tags/Java/" rel="tag"># Java</a>
+          
+            <a href="/tags/Jenkins/" rel="tag"># Jenkins</a>
           
         </div>
       
@@ -664,7 +664,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text">Jenkins部署环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.1.</span> <span class="nav-text">Maven环境配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.2.</span> <span class="nav-text">Tomcat配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.3.</span> <span class="nav-text">Jenkins配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">2.</span> <span class="nav-text">GitHub触发Jenkins构建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.1.</span> <span class="nav-text">GitHub创建webhook</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.2.</span> <span class="nav-text">GitHub创建secretText</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.3.</span> <span class="nav-text">Jenkins配置密钥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">2.4.</span> <span class="nav-text">Jenkins配置环境</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">3.</span> <span class="nav-text">Jenkins创建、配置项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">4.</span> <span class="nav-text">常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">4.0.1.</span> <span class="nav-text">找不到创建maven项目？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link"><span class="nav-number">4.0.2.</span> <span class="nav-text">构建错误：Maven JVM terminated unexpectedly with exit code 137？</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Jenkins%E9%83%A8%E7%BD%B2%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-number">1.</span> <span class="nav-text">Jenkins部署环境搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Maven%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE"><span class="nav-number">1.1.</span> <span class="nav-text">Maven环境配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tomcat%E9%85%8D%E7%BD%AE"><span class="nav-number">1.2.</span> <span class="nav-text">Tomcat配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Jenkins%E9%85%8D%E7%BD%AE"><span class="nav-number">1.3.</span> <span class="nav-text">Jenkins配置</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHub%E8%A7%A6%E5%8F%91Jenkins%E6%9E%84%E5%BB%BA"><span class="nav-number">2.</span> <span class="nav-text">GitHub触发Jenkins构建</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#GitHub%E5%88%9B%E5%BB%BAwebhook"><span class="nav-number">2.1.</span> <span class="nav-text">GitHub创建webhook</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#GitHub%E5%88%9B%E5%BB%BAsecretText"><span class="nav-number">2.2.</span> <span class="nav-text">GitHub创建secretText</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Jenkins%E9%85%8D%E7%BD%AE%E5%AF%86%E9%92%A5"><span class="nav-number">2.3.</span> <span class="nav-text">Jenkins配置密钥</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Jenkins%E9%85%8D%E7%BD%AE%E7%8E%AF%E5%A2%83"><span class="nav-number">2.4.</span> <span class="nav-text">Jenkins配置环境</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Jenkins%E5%88%9B%E5%BB%BA%E3%80%81%E9%85%8D%E7%BD%AE%E9%A1%B9%E7%9B%AE"><span class="nav-number">3.</span> <span class="nav-text">Jenkins创建、配置项目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98"><span class="nav-number">4.</span> <span class="nav-text">常见问题</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%89%BE%E4%B8%8D%E5%88%B0%E5%88%9B%E5%BB%BAmaven%E9%A1%B9%E7%9B%AE%EF%BC%9F"><span class="nav-number">4.0.1.</span> <span class="nav-text">找不到创建maven项目？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9E%84%E5%BB%BA%E9%94%99%E8%AF%AF%EF%BC%9AMaven-JVM-terminated-unexpectedly-with-exit-code-137%EF%BC%9F"><span class="nav-number">4.0.2.</span> <span class="nav-text">构建错误：Maven JVM terminated unexpectedly with exit code 137？</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
