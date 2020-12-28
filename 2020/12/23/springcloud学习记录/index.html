@@ -48,7 +48,7 @@
 <meta property="og:image" content="http://cdn.bitclick.top/hystrix-command-flow-chart.png">
 <meta property="og:image" content="http://cdn.bitclick.top/image-20201224144848133.png">
 <meta property="article:published_time" content="2020-12-23T11:26:52.857Z">
-<meta property="article:modified_time" content="2020-12-28T10:12:35.990Z">
+<meta property="article:modified_time" content="2020-12-28T12:56:31.902Z">
 <meta property="article:author" content="Xie Yingchao">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="SpringCloud">
@@ -245,7 +245,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-28 18:12:35" itemprop="dateModified" datetime="2020-12-28T18:12:35+08:00">2020-12-28</time>
+                <time title="修改时间：2020-12-28 20:56:31" itemprop="dateModified" datetime="2020-12-28T20:56:31+08:00">2020-12-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -271,8 +271,8 @@
         <h2 id="版本选择"><a class="header-anchor" href="#版本选择">¶</a>版本选择</h2>
 <p>SpringCloud和SpringBoot的版本必须严格对应，才能正常运行。</p>
 <p>版本对应查看方式：<a target="_blank" rel="noopener" href="https://start.spring.io/actuator/info">发送请求</a>，或者查看SpringCloud具体版本的<a target="_blank" rel="noopener" href="https://docs.spring.io/spring-cloud/docs/Hoxton.SR9/reference/html/"> Reference Doc.</a></p>
-<p><img data-src="http://cdn.bitclick.top/image-20201223194446002.png" alt="image-20201223194446002"></p>
-<p><img data-src="http://cdn.bitclick.top/image-20201223194614794.png" alt="image-20201223194614794"></p>
+<p><img data-src="http://cdn.bitclick.top/image-20201223194446002.png" alt="查看版本对应情况"></p>
+<p><img data-src="http://cdn.bitclick.top/image-20201223194614794.png" alt="推荐版本"></p>
 <a id="more"></a><!--toc-->
 <h2 id="SpringCloud组件选择"><a class="header-anchor" href="#SpringCloud组件选择">¶</a>SpringCloud组件选择</h2>
 <p><img data-src="http://cdn.bitclick.top/SpringCloud%E7%BB%84%E4%BB%B6%E5%8D%87%E7%BA%A7.png" alt="SpringCloud组件升级"></p>
@@ -302,7 +302,7 @@
 <li>创建SpringBoot启动类。</li>
 <li>idea中创建启动配置，选择SpringBoot启动类。</li>
 </ol>
-<p><img data-src="http://cdn.bitclick.top/image-20201224145412179.png" alt="image-20201224145412179"></p>
+<p><img data-src="http://cdn.bitclick.top/image-20201224145412179.png" alt="配置启动项"></p>
 <h2 id="服务注册"><a class="header-anchor" href="#服务注册">¶</a>服务注册</h2>
 <h3 id="CAP定理"><a class="header-anchor" href="#CAP定理">¶</a>CAP定理</h3>
 <p>CAP原则又称CAP定理，指的是在一个分布式系统中，Consistency（数据一致性）、Availability（服务可用性）、Partition-toelerance（分区容错性），三者不可兼得，只能进行三选二。</p>
@@ -351,7 +351,7 @@
 <h4 id="Eureka简介"><a class="header-anchor" href="#Eureka简介">¶</a>Eureka简介</h4>
 <p>Eureka是Netflix开发的服务注册发现框架，包括Eureka-Server服务端用于提供服务注册功能、Eureka-Client客户端用于与服务端交互。</p>
 <p><strong>Eureka工作原理：</strong></p>
-<p><img data-src="http://cdn.bitclick.top/image-20201225102819221.png" alt="image-20201225102819221"></p>
+<p><img data-src="http://cdn.bitclick.top/image-20201225102819221.png" alt="Eureka工作原理"></p>
 <blockquote>
 <p>Register：服务提供者将自己的信息提交到注册中心注册，包括IP和端口</p>
 <p>Renew： 服务续约，提供者每个30秒（默认）发送心跳包给注册中心，声明自己服务正常</p>
@@ -386,7 +386,7 @@
 <p>设置请求URL</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String PAYMENT_URL = <span class="string">&quot;http://CLOUD-PAYMENT-SERVICE&quot;</span>;</span><br></pre></td></tr></table></figure>
 <p>这个链接内容可以在Eureka中查到。这个值可以通过<code>eureka.instance.appname</code>和<code>spring.application.name</code>两个属性设置，其中<code>eureka.instance.appname</code>优先级更高。</p>
-<p><img data-src="http://cdn.bitclick.top/image-20201225115032788.png" alt="image-20201225115032788"></p>
+<p><img data-src="http://cdn.bitclick.top/image-20201225115032788.png" alt="服务名称设置"></p>
 <p>消费类示例：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String PAYMENT_URL = <span class="string">&quot;http://CLOUD-PAYMENT-SERVICE&quot;</span>;</span><br><span class="line"><span class="comment">//    public static final String PAYMENT_URL = &quot;http://localhost:8001&quot;;</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> RestTemplate restTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@PostMapping(&quot;/consumer/payment/create&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> CommonResult&lt;Boolean&gt; <span class="title">create</span><span class="params">(Payment payment)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> restTemplate.postForObject(PAYMENT_URL + <span class="string">&quot;/payment/create&quot;</span>, payment, CommonResult.class);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/consumer/get/&#123;id&#125;&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> CommonResult&lt;Payment&gt; <span class="title">getPaymentById</span><span class="params">(<span class="meta">@PathVariable(&quot;id&quot;)</span> Long id)</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> restTemplate.getForObject(PAYMENT_URL + <span class="string">&quot;/get/&quot;</span> + id, CommonResult.class);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="服务发现Discovery"><a class="header-anchor" href="#服务发现Discovery">¶</a>服务发现Discovery</h4>
@@ -414,7 +414,7 @@
 <p>Renews (last min)：上一分钟收到的实际续约数</p>
 <p>Renews threshold：期望收到的实际续约数</p>
 </blockquote>
-<p><img data-src="http://cdn.bitclick.top/image-20201225141353637.png" alt="image-20201225141353637"></p>
+<p><img data-src="http://cdn.bitclick.top/image-20201225141353637.png" alt="dashboard显示自我保护模式"></p>
 <h5 id="自我保护模式相关配置"><a class="header-anchor" href="#自我保护模式相关配置">¶</a>自我保护模式相关配置</h5>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">eureka:</span></span><br><span class="line">  <span class="attr">server:</span></span><br><span class="line">    <span class="comment"># 禁用自我保护机制</span></span><br><span class="line">    <span class="attr">enable-self-preservation:</span> <span class="literal">false</span></span><br><span class="line">    <span class="comment"># 自我保护开启阈值，默认是0.85</span></span><br><span class="line">    <span class="attr">renewal-percent-threshold:</span> <span class="number">0.85</span></span><br><span class="line">    <span class="comment"># 续约更新时间，心跳时间，默认30秒，client端配置</span></span><br><span class="line">    <span class="attr">lease-renewal-interval-in-seconds:</span> <span class="number">30</span></span><br><span class="line">    <span class="comment"># 续约到期时间，默认90秒，client端配置，超时将删除client</span></span><br><span class="line">    <span class="attr">lease-expiration-duration-in-seconds:</span> <span class="number">90</span></span><br><span class="line">    <span class="comment"># 清理宕机client的时间间隔，默认60秒，server端配置</span></span><br><span class="line">    <span class="attr">eviction-interval-timer-in-ms:</span> <span class="number">60</span><span class="string">*1000</span></span><br></pre></td></tr></table></figure>
 <h3 id="服务注册中心-ZooKeeper"><a class="header-anchor" href="#服务注册中心-ZooKeeper">¶</a>服务注册中心-ZooKeeper</h3>
@@ -452,19 +452,19 @@
 <h4 id="ZooKeeper集群搭建示例（伪集群）"><a class="header-anchor" href="#ZooKeeper集群搭建示例（伪集群）">¶</a>ZooKeeper集群搭建示例（伪集群）</h4>
 <p>步骤：修改配置文件 &gt; 分别启动服务 &gt; 注册服务</p>
 <p><strong>创建配置文件：</strong> 创建三份配置文件，分别对应三个注册服务中心。</p>
-<p><img data-src="http://cdn.bitclick.top/image-20201226170150678.png" alt="image-20201226170150678"></p>
+<p><img data-src="http://cdn.bitclick.top/image-20201226170150678.png" alt="创建服务配置文件"></p>
 <p><strong>修改配置文件：</strong> 分别修改三份配置文件dataDir数据目录和clientPort端口号，并在配置文件中添加如下配置。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># server.myid=ip:port1:port2</span><br><span class="line"># myid 服务的id号</span><br><span class="line"># ip 服务所在IP地址或主机名</span><br><span class="line"># port1 follow主机与leader主机通信的端口 port2 用于选举新leader的端口</span><br><span class="line">server.1=localhost:2232:3332</span><br><span class="line">server.2=localhost:2234:3334</span><br><span class="line">server.3=localhost:2233:3333</span><br></pre></td></tr></table></figure>
 <p><strong>创建myid文件：</strong> 去配置文件中定义的dataDir目录创建myid文件，内容就是myid。</p>
-<p><img data-src="http://cdn.bitclick.top/image-20201226171155761.png" alt="image-20201226171155761"></p>
+<p><img data-src="http://cdn.bitclick.top/image-20201226171155761.png" alt="设置myid"></p>
 <p><strong>启动服务：</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 启动服务</span></span><br><span class="line">./bin/zkServer.sh start ./conf/zoo1.cfg</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看状态</span></span><br><span class="line">./bin/zkServer.sh status ./conf/zoo1.cfg</span><br></pre></td></tr></table></figure>
-<p><img data-src="http://cdn.bitclick.top/image-20201226183045357.png" alt="image-20201226183045357"></p>
+<p><img data-src="http://cdn.bitclick.top/image-20201226183045357.png" alt="启动服务并查看状态"></p>
 <p><strong>开启watcher客户端：</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 指定主机名和端口号</span></span><br><span class="line">./bin/zkCli.sh -server localhost:2181</span><br></pre></td></tr></table></figure>
 <p><strong>测试：</strong></p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  cloud:</span><br><span class="line">    zookeeper:</span><br><span class="line">      connect-string: localhost:2181,localhost:2182,localhost:2183</span><br><span class="line">  application:</span><br><span class="line">    name: cloud-consumer-order80</span><br></pre></td></tr></table></figure>
-<p><img data-src="http://cdn.bitclick.top/image-20201226184151743.png" alt="image-20201226184151743"></p>
+<p><img data-src="http://cdn.bitclick.top/image-20201226184151743.png" alt="Zookeeper注册中心查到对应的服务"></p>
 <h4 id="ZooKeeper能够作为注册中心的原理"><a class="header-anchor" href="#ZooKeeper能够作为注册中心的原理">¶</a>ZooKeeper能够作为注册中心的原理</h4>
 <p>Zookeeper采用的主从模式，使用Paxos算法选举leader服务器，只有leader服务器对外提供服务注册功能，其他follow服务器实时备份leader服务器数据。</p>
 <p>Zookeeper有一个Watcher，他可以查询到Zookeeper的结构，SpringCloud可以通过Zookeeper提供的API实现将信息存储到Zookeeper中，也可以通过Watcher检测到Zookeeper中结构数据的变化，从而实现服务的注册和发现。</p>
@@ -491,7 +491,7 @@
 <h4 id="如何指定其他规则？"><a class="header-anchor" href="#如何指定其他规则？">¶</a>如何指定其他规则？</h4>
 <p>首先将自己的需要的规则加入到Spring容器，注意这个配置类不能放在启动类的同一个包或者子包下。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MySelfRule</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> IRule <span class="title">getRandomRule</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="comment">// 使用自带的随机选择Rule</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RandomRule();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img data-src="http://cdn.bitclick.top/image-20201227145953364.png" alt="image-20201227145953364"></p>
+<p><img data-src="http://cdn.bitclick.top/image-20201227145953364.png" alt="项目结构"></p>
 <p>然后在启动类上添加注解，指定规则，name指定服务名称，configuration指定规则配置类。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@RibbonClient(name = &quot;CLOUD-PAYMENT-SERVICE&quot;, configuration = MySelfRule.class)</span></span><br></pre></td></tr></table></figure>
 <h3 id="OpenFeign"><a class="header-anchor" href="#OpenFeign">¶</a>OpenFeign</h3>
@@ -521,10 +521,10 @@
 <h3 id="相关概念"><a class="header-anchor" href="#相关概念">¶</a>相关概念</h3>
 <h4 id="服务熔断"><a class="header-anchor" href="#服务熔断">¶</a>服务熔断</h4>
 <p>“扇出”：微服务A调用服务B和服务C，而服务B和C又调用其他服务，调用链路像一把扇子一样，这种现象就叫“扇出”。</p>
-<p><img data-src="http://cdn.bitclick.top/soa-1-640.png" alt="img"></p>
+<p><img data-src="http://cdn.bitclick.top/soa-1-640.png" alt="扇出现象"></p>
 <p>“雪崩效应”：如果扇出的链路上某个服务的响应时间过长或者服务不可用，那么服务A的调用就会堆积，对服务A的调用就会消耗越来越多的资源，从而引起系统的崩溃，这就是“雪崩效应”。</p>
-<p><img data-src="http://cdn.bitclick.top/soa-2-640.png" alt="img"></p>
-<p><img data-src="http://cdn.bitclick.top/soa-3-640.png" alt="img"></p>
+<p><img data-src="http://cdn.bitclick.top/soa-2-640.png" alt="单个请求阻塞"></p>
+<p><img data-src="http://cdn.bitclick.top/soa-3-640.png" alt="多个请求阻塞"></p>
 <p>服务熔断：熔断器——相当于电路中的保险丝，当电流过大时，保险丝便会熔断，从而保护电路。服务熔断是应对雪崩效应的一种服务保护机制。当扇出链路中的某个服务不可用时，熔断器为避免大量服务堆积消耗系统资源，服务熔断会使该服务快速返回错误信息，避免长时间等待。检测到服务正常后，熔断又会恢复调用链路。</p>
 <h4 id="服务降级"><a class="header-anchor" href="#服务降级">¶</a>服务降级</h4>
 <p>服务降级是指当服务器压力剧增的情况下，根据业务的情况和流量，对一些服务采取不处理或者更换成简单的处理方式，从而保证核心服务的正常高效运行。所以在高峰期，需要对服务进行降级操作。比如双十一凌晨下单高峰期，淘宝会把相关服务进行降级，如暂停历史订单查询服务，双十一前三十分钟是无法查询历史订单的。</p>
