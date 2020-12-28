@@ -47,7 +47,7 @@
 <meta property="og:image" content="http://cdn.bitclick.top/hystrix-command-flow-chart.png">
 <meta property="og:image" content="http://cdn.bitclick.top/image-20201224144848133.png">
 <meta property="article:published_time" content="2020-12-23T11:26:52.857Z">
-<meta property="article:modified_time" content="2020-12-28T09:29:47.655Z">
+<meta property="article:modified_time" content="2020-12-28T09:46:14.380Z">
 <meta property="article:author" content="Xie Yingchao">
 <meta property="article:tag" content="Java">
 <meta property="article:tag" content="SpringCloud">
@@ -215,7 +215,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-12-28 17:29:47" itemprop="dateModified" datetime="2020-12-28T17:29:47+08:00">2020-12-28</time>
+                <time title="修改时间：2020-12-28 17:46:14" itemprop="dateModified" datetime="2020-12-28T17:46:14+08:00">2020-12-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -396,12 +396,12 @@
 <h4 id="ZooKeeper单机版搭建示例"><a class="header-anchor" href="#ZooKeeper单机版搭建示例">¶</a>ZooKeeper单机版搭建示例</h4>
 <h5 id="Zookeeper安装教程（Linux）"><a class="header-anchor" href="#Zookeeper安装教程（Linux）">¶</a>Zookeeper安装教程（Linux）</h5>
 <p>步骤：前提条件 &gt; 下载安装包 &gt; 解压 &gt; 修改config &gt; 开启服务 &gt; 连接客户端</p>
-<p>**前提条件：**Zookeeper依赖Java环境，所以Linux需要配置好JDK。</p>
-<p>**下载安装包：**命令如下：</p>
+<p><strong>前提条件：</strong>  Zookeeper依赖Java环境，所以Linux需要配置好JDK。</p>
+<p><strong>下载安装包：</strong> 命令如下：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://mirrors.tuna.tsinghua.edu.cn/apache/zookeeper/zookeeper-3.5.8/apache-zookeeper-3.5.8-bin.tar.gz</span><br></pre></td></tr></table></figure>
 <p><strong>解压：</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf apache-zookeeper-3.5.8-bin.tar.gz</span><br></pre></td></tr></table></figure>
-<p>**修改config：**只需要将./conf/zoo_simple.cfg 文件重命名成zoo.cfg即可。</p>
+<p><strong>修改config：</strong> 只需要将./conf/zoo_simple.cfg 文件重命名成zoo.cfg即可。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp conf/zoo_sample.cfg conf/zoo.cfg</span><br></pre></td></tr></table></figure>
 <p><strong>开启服务：</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 开启服务</span></span><br><span class="line">./bin/zkServer.sh start</span><br><span class="line"><span class="meta">#</span><span class="bash"> 停止服务</span></span><br><span class="line">./bin/zkServer.sh stop</span><br></pre></td></tr></table></figure>
@@ -411,21 +411,21 @@
 <h4 id="客户端注册"><a class="header-anchor" href="#客户端注册">¶</a>客户端注册</h4>
 <h5 id="服务提供者-v2"><a class="header-anchor" href="#服务提供者-v2">¶</a>服务提供者</h5>
 <p>步骤：建工程 &gt; 改pom &gt; 改yml &gt; 启动类 &gt; 编码</p>
-<p>**改pom：**要将服务注册到Zookeeper上，需要导入Zookeeper服务发现依赖。</p>
+<p><strong>改pom：</strong> 要将服务注册到Zookeeper上，需要导入Zookeeper服务发现依赖。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.cloud<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-cloud-starter-zookeeper-discovery<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>**改yml：**yml配置文件需要添加Zookeeper相关配置。</p>
+<p><strong>改yml：</strong> yml配置文件需要添加Zookeeper相关配置。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">spring:</span><br><span class="line">  application:</span><br><span class="line">	# 服务名称</span><br><span class="line">    name: cloud-provider-payment8004</span><br><span class="line">  cloud:</span><br><span class="line">    zookeeper:</span><br><span class="line">	  # ZooKeeper服务注册中心的地址，多个用逗号分隔</span><br><span class="line">      connect-string: localhost:2181</span><br></pre></td></tr></table></figure>
-<p>**启动类：**启动类上需要加上``@EnableDiscoveryClient`注解。</p>
+<p><strong>启动类：</strong> 启动类上需要加上``@EnableDiscoveryClient`注解。</p>
 <h5 id="服务消费者-v2"><a class="header-anchor" href="#服务消费者-v2">¶</a>服务消费者</h5>
 <p>服务消费者的注册同提供者一样，不过要注意的是，消费者使用RestTemplate来调用提供者的服务，需要配置负载均衡。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Configuration</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">RestTemplateConfig</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="meta">@LoadBalanced</span></span><br><span class="line">    <span class="comment">// LoadBalanced开启负载均衡，默认策略是轮询</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> RestTemplate <span class="title">getRestTemplate</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> RestTemplate();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@RestController</span></span><br><span class="line"><span class="meta">@Slf4j</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">OrderZKController</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 服务调用URL是提供者设置的服务名</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String INVOKE_URL = <span class="string">&quot;http://cloud-provider-payment8004&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Resource</span></span><br><span class="line">    <span class="keyword">private</span> RestTemplate restTemplate;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@GetMapping(&quot;/consumer/payment/zk&quot;)</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getPaymentInfo</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> restTemplate.getForObject(INVOKE_URL + <span class="string">&quot;/payment/zk&quot;</span>, String.class);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <h4 id="ZooKeeper集群搭建示例（伪集群）"><a class="header-anchor" href="#ZooKeeper集群搭建示例（伪集群）">¶</a>ZooKeeper集群搭建示例（伪集群）</h4>
 <p>步骤：修改配置文件 &gt; 分别启动服务 &gt; 注册服务</p>
-<p>**创建配置文件：**创建三份配置文件，分别对应三个注册服务中心。</p>
+<p><strong>创建配置文件：</strong> 创建三份配置文件，分别对应三个注册服务中心。</p>
 <p><img src="http://cdn.bitclick.top/image-20201226170150678.png" alt="image-20201226170150678"></p>
-<p>**修改配置文件：**分别修改三份配置文件dataDir数据目录和clientPort端口号，并在配置文件中添加如下配置。</p>
+<p><strong>修改配置文件：</strong> 分别修改三份配置文件dataDir数据目录和clientPort端口号，并在配置文件中添加如下配置。</p>
 <figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># server.myid=ip:port1:port2</span><br><span class="line"># myid 服务的id号</span><br><span class="line"># ip 服务所在IP地址或主机名</span><br><span class="line"># port1 follow主机与leader主机通信的端口 port2 用于选举新leader的端口</span><br><span class="line">server.1=localhost:2232:3332</span><br><span class="line">server.2=localhost:2234:3334</span><br><span class="line">server.3=localhost:2233:3333</span><br></pre></td></tr></table></figure>
-<p>**创建myid文件：**去配置文件中定义的dataDir目录创建myid文件，内容就是myid。</p>
+<p><strong>创建myid文件：</strong> 去配置文件中定义的dataDir目录创建myid文件，内容就是myid。</p>
 <p><img src="http://cdn.bitclick.top/image-20201226171155761.png" alt="image-20201226171155761"></p>
 <p><strong>启动服务：</strong></p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 启动服务</span></span><br><span class="line">./bin/zkServer.sh start ./conf/zoo1.cfg</span><br><span class="line"><span class="meta">#</span><span class="bash"> 查看状态</span></span><br><span class="line">./bin/zkServer.sh status ./conf/zoo1.cfg</span><br></pre></td></tr></table></figure>
