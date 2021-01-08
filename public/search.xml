@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>踩坑记录</title>
+      <link href="2021/01/08/%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/"/>
+      <url>2021/01/08/%E8%B8%A9%E5%9D%91%E8%AE%B0%E5%BD%95/</url>
+      
+        <content type="html"><![CDATA[<h3 id="idea提示git找不到关联分支？"><a class="header-anchor" href="#idea提示git找不到关联分支？">¶</a>idea提示git找不到关联分支？</h3><p>出现这个问题是本地分支无法和远程分支匹配。</p><p><strong>解决办法：</strong> 指定该分支的远程分支</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> xxx为远程分支名</span></span><br><span class="line">git branch --set-upstream-to=origin/xxx</span><br></pre></td></tr></table></figure><h3 id="代码push到错误的远程分支怎么办？"><a class="header-anchor" href="#代码push到错误的远程分支怎么办？">¶</a>代码push到错误的远程分支怎么办？</h3><p>首先不要慌。</p><p>先新建一个本地仓库，将已提交的代码保存起来，即将当前分支checkout一份出去。</p><p>回退会使这次提交的代码会消失，所以需要保存代码。</p><p>使用 <code>git reset head~1</code> 命令回退到上次提交，然后<code>git push -f</code> 强制将本次回退，提交到远程分支。</p><p>或者使用git log 命令查看分支的提交记录，它会打印出每一次commit的ID，然后使用命令 <code>git reset --hard 'commit_id'</code> 命令回退到指定的commit状态，注意这里的commit_id是之前查到的commit的ID，然后<code>git push -f</code> 强制将本次回退，提交到远程分支。</p><h3 id="Builder注解使无参构造失效？"><a class="header-anchor" href="#Builder注解使无参构造失效？">¶</a>@Builder注解使无参构造失效？</h3><p>当我们写完一个DTO或者Entity的属性时，我们不想再写他的get和set方法，就可以使用Lombok的@Data注解，自动生成，当我们不想使用构造函数生成对象时，可以使用@Builder注解来，采用Builder的形式设置属性值获取对象，但是@Builder会使类的默认的无参构造函数失效，导致不能使用无参构造函数来创建对象。</p><p><strong>解决办法：</strong> 在类上添加两个注解，指定生成构造函数。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@AllArgsConstructor</span> <span class="comment">// 生成全参构造函数</span></span><br><span class="line"><span class="meta">@NoArgsConstructor</span> <span class="comment">// 生成无参构造函数</span></span><br></pre></td></tr></table></figure><h3 id="对前端传来的DTO进行属性校验？"><a class="header-anchor" href="#对前端传来的DTO进行属性校验？">¶</a>对前端传来的DTO进行属性校验？</h3><p>参考文章：<a href="https://blog.csdn.net/sunnyzyq/article/details/103527380">@Valid 注解用法详解</a></p><ol><li><p>在DTO的属性上添加注解。</p> <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@NotBlank(message)</span> <span class="comment">//字符串不能为空串、不能为null</span></span><br><span class="line"><span class="meta">@NotNull(message)</span> <span class="comment">//对象不能为null</span></span><br><span class="line"><span class="meta">@NotEmpty(message)</span> <span class="comment">//Collection对象不能为null，不能为空</span></span><br></pre></td></tr></table></figure></li><li><p>在接口参数上加上@Valid注解，说明要对这个DTO进行校验，同时要给这个接口传个校验结果BingResult。</p></li></ol><p><img data-src="http://cdn.bitclick.top/image-20210108212303947.png" alt="示例"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 问题记录 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SpringCloud学习记录</title>
       <link href="2020/12/23/springcloud%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
       <url>2020/12/23/springcloud%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</url>
